@@ -16,7 +16,7 @@
 <link rel="icon" href="/assets/brand/org-icon.svg?v=autumn-1" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/brand/org-icon.png?v=autumn-1">
 <link rel="preload" href="/assets/fonts/schibsted-f5ed7f023d.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css?v=autumn-1">
+<link rel="stylesheet" href="/assets/site.css?v=autumn-2">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -41,7 +41,7 @@
         <dt>AS name</dt><dd>GL-AS</dd>
         <dt>Registry</dt><dd>RIPE NCC</dd>
         <dt>Upstreams</dt><dd><a href="#upstreams">AS209874 · AS49581</a></dd>
-        <dt>DDoS protection</dt><dd><a href="#protection">PletX, via upstream</a></dd>
+        <dt>DDoS protection</dt><dd><a href="#protection">PletX-powered</a></dd>
         <dt>Geofeed</dt><dd><a class="ext" href="https://cdn.as218429.net/geofeed.csv">geofeed.csv</a></dd>
         <dt>PeeringDB</dt><dd><a class="ext" href="https://www.peeringdb.com/net/43956" target="_blank" rel="noopener noreferrer">net 43956</a></dd>
       </dl>
@@ -61,20 +61,21 @@
 
 <section class="s" id="protection" aria-labelledby="h-p">
   <div class="wrap">
-    <div class="sh"><h2 id="h-p">DDoS protection</h2><p>Traffic to AS218429 is filtered by PletX, provided through our upstream.</p></div>
+    <div class="sh"><h2 id="h-p">DDoS protection</h2><p>Our PletX-powered protection filters attack traffic before it reaches your services.</p></div>
     <div class="prot">
       <div class="fig">
         <p class="n" aria-label="8 plus terabits per second">8+<small>Tbps</small></p>
-        <p class="l">Upstream protection capacity</p>
-        <p class="src">Published by NovaCloud (AS209874) for its PletX-backed network. Provider capacity, not dedicated to AS218429. <a class="ext" href="https://novacloud-hosting.com/ddos-protection" target="_blank" rel="noopener noreferrer">NovaCloud specifications</a></p>
+        <p class="l">DDoS mitigation capacity</p>
       </div>
       <div class="caps">
-        <ul aria-label="Published upstream capabilities">
-          <li><b>Symmetric filtering</b><span>Incoming and outgoing traffic.</span></li>
-          <li><b>XDP/eBPF</b><span>Filtering in the packet fast path.</span></li>
+        <ul aria-label="Protection features">
+          <li><b>Symmetric filtering</b><span>Filters inbound and outbound traffic.</span></li>
+          <li><b>XDP/eBPF fast path</b><span>Packets filtered in the kernel fast path.</span></li>
           <li><b>Game-aware filters</b><span>Protocol-aware rules for game traffic.</span></li>
+          <li><b>Automatic port learning</b><span>Filters follow the ports your services actually use.</span></li>
+          <li><b>Query proxies</b><span>Game server queries are answered by the protection layer.</span></li>
+          <li><b>Protocol validation</b><span>Malformed and invalid packets are dropped.</span></li>
         </ul>
-        <p class="fine">Capabilities as published by the upstream provider; not a per-service guarantee.</p>
       </div>
     </div>
   </div>
@@ -87,7 +88,7 @@
       <caption class="vh">Registered upstreams of AS218429</caption>
       <thead><tr><th scope="col">ASN</th><th scope="col">Network</th><th scope="col">Website</th></tr></thead>
       <tbody>
-        <tr><td>AS209874</td><td>NovaCloud-Hosting<span class="sub">Tech Tide</span></td><td><a class="ext" href="https://as209874.net" target="_blank" rel="noopener noreferrer">as209874.net</a></td></tr>
+        <tr><td>AS209874</td><td>Tech Tide</td><td><a class="ext" href="https://as209874.net" target="_blank" rel="noopener noreferrer">as209874.net</a></td></tr>
         <tr><td>AS49581</td><td>Tube-Hosting<span class="sub"><a class="ext" href="https://lg.as49581.net/" target="_blank" rel="noopener noreferrer">Upstream looking glass</a></span></td><td><a class="ext" href="https://as49581.net" target="_blank" rel="noopener noreferrer">as49581.net</a></td></tr>
       </tbody>
     </table>

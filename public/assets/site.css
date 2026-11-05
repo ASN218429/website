@@ -79,19 +79,16 @@ section.s{padding:112px 0 0}
 
 /* Protection */
 .prot{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px}
-.fig{background:var(--panel);border-radius:var(--r);padding:32px;display:flex;flex-direction:column;gap:12px}
+.fig{background:var(--panel);border-radius:var(--r);padding:32px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px}
 .fig .n{font-weight:800;font-size:clamp(4.2rem,2rem + 5.5vw,6.5rem);line-height:.85;letter-spacing:-.04em;color:var(--accent2);font-variant-numeric:tabular-nums}
 .fig .n small{font-size:.34em;letter-spacing:-.01em;margin-left:.1em;color:var(--fg)}
 .fig .l{font-weight:600;font-size:19px}
-.fig .src{font-size:15px;color:var(--muted)}
-.fig .src a{color:var(--fg)}
-.caps{background:var(--panel);border-radius:var(--r);padding:10px 28px 22px}
+.caps{background:var(--panel);border-radius:var(--r);padding:10px 28px}
 .caps ul{list-style:none}
 .caps li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:20px;padding:16px 0;border-top:1px solid var(--line)}
 .caps li:first-child{border-top:0}
 .caps li b{font-weight:600}
 .caps li span{color:var(--muted)}
-.caps .fine{font-size:14px;color:var(--muted);padding-top:14px;border-top:1px solid var(--line)}
 
 /* Upstreams */
 .tbl{width:100%;border-collapse:collapse;font-size:16px}
