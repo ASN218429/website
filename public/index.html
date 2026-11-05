@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#17110e">
 <title>AS218429 · GL-AS</title>
-<meta name="description" content="AS218429 (GL-AS) is the hosting and backbone network behind Ruxora and GaleniusNodes. Upstreams, DDoS protection, registry records, geofeed and contact for network operators.">
+<meta name="description" content="AS218429 (GL-AS) is the hosting and backbone network behind Ruxora and GaleniusNodes. Upstreams, DDoS protection, network locations, registry records, geofeed and contact for network operators.">
 <link rel="canonical" href="https://as218429.net/">
 <meta property="og:title" content="AS218429 · GL-AS">
 <meta property="og:description" content="The hosting and backbone network behind Ruxora and GaleniusNodes.">
@@ -16,14 +16,14 @@
 <link rel="icon" href="/assets/brand/org-icon.svg?v=autumn-1" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/brand/org-icon.png?v=autumn-1">
 <link rel="preload" href="/assets/fonts/schibsted-f5ed7f023d.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css?v=autumn-2">
+<link rel="stylesheet" href="/assets/site.css?v=autumn-3">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="bar" id="top">
   <div class="wrap">
     <a class="wm" href="#top"><img src="/assets/brand/org-icon.svg?v=autumn-1" alt="" width="28" height="28"><span>AS218429</span></a>
-    <nav aria-label="Sections"><a href="#networks">Networks</a><a href="#protection">Protection</a><a href="#upstreams">Upstreams</a><a href="#records">Records</a><a href="#contact">Contact</a></nav>
+    <nav aria-label="Sections"><a href="#networks">Networks</a><a href="#protection">Protection</a><a href="#locations">Locations</a><a href="#upstreams">Upstreams</a><a href="#records">Records</a><a href="#contact">Contact</a></nav>
   </div>
 </header>
 
@@ -42,6 +42,7 @@
         <dt>Registry</dt><dd>RIPE NCC</dd>
         <dt>Upstreams</dt><dd><a href="#upstreams">AS209874 · AS49581</a></dd>
         <dt>DDoS protection</dt><dd><a href="#protection">PletX-powered</a></dd>
+        <dt>Locations</dt><dd><a href="#locations">Frankfurt · Athens</a></dd>
         <dt>Geofeed</dt><dd><a class="ext" href="https://cdn.as218429.net/geofeed.csv">geofeed.csv</a></dd>
         <dt>PeeringDB</dt><dd><a class="ext" href="https://www.peeringdb.com/net/43956" target="_blank" rel="noopener noreferrer">net 43956</a></dd>
       </dl>
@@ -67,17 +68,33 @@
         <p class="n" aria-label="8 plus terabits per second">8+<small>Tbps</small></p>
         <p class="l">DDoS mitigation capacity</p>
       </div>
-      <div class="caps">
-        <ul aria-label="Protection features">
-          <li><b>Symmetric filtering</b><span>Filters inbound and outbound traffic.</span></li>
-          <li><b>XDP/eBPF fast path</b><span>Packets filtered in the kernel fast path.</span></li>
-          <li><b>Game-aware filters</b><span>Protocol-aware rules for game traffic.</span></li>
-          <li><b>Automatic port learning</b><span>Filters follow the ports your services actually use.</span></li>
-          <li><b>Query proxies</b><span>Game server queries are answered by the protection layer.</span></li>
-          <li><b>Protocol validation</b><span>Malformed and invalid packets are dropped.</span></li>
-        </ul>
-      </div>
+      <ul class="caps" aria-label="Protection features">
+        <li><b>Symmetric filtering</b><span>Filters inbound and outbound traffic.</span></li>
+        <li><b>XDP/eBPF fast path</b><span>Packets filtered in the kernel fast path.</span></li>
+        <li><b>Game-aware filters</b><span>Protocol-aware rules for game traffic.</span></li>
+        <li><b>Automatic port learning</b><span>Filters follow the ports your services actually use.</span></li>
+        <li><b>Query proxies</b><span>Game server queries are answered by the protection layer.</span></li>
+        <li><b>Protocol validation</b><span>Malformed and invalid packets are dropped.</span></li>
+      </ul>
     </div>
+  </div>
+</section>
+
+<section class="s" id="locations" aria-labelledby="h-l">
+  <div class="wrap">
+    <div class="sh"><h2 id="h-l">Network locations</h2><p>Locations published in our <a class="ext" href="https://cdn.as218429.net/geofeed.csv">geofeed</a>: eight prefixes across two cities.</p></div>
+    <ul class="locs">
+      <li>
+        <div class="lt"><h3>Frankfurt am Main</h3><p>Germany <span>DE-HE</span></p></div>
+        <dl class="fam"><div><dt>IPv4</dt><dd>2 prefixes</dd></div><div><dt>IPv6</dt><dd>3 prefixes</dd></div></dl>
+        <details><summary>Prefix list</summary><ul class="pfx" aria-label="Frankfurt am Main prefixes"><li><code>165.217.164.0/24</code></li><li><code>165.217.165.0/24</code></li><li><code>2a14:7580:fff8::/48</code></li><li><code>2a14:7583:8300::/40</code></li><li><code>2a14:7583:8400::/40</code></li></ul></details>
+      </li>
+      <li>
+        <div class="lt"><h3>Athens</h3><p>Greece <span>GR-I</span></p></div>
+        <dl class="fam"><div><dt>IPv4</dt><dd>None</dd></div><div><dt>IPv6</dt><dd>3 prefixes</dd></div></dl>
+        <details><summary>Prefix list</summary><ul class="pfx" aria-label="Athens prefixes"><li><code>2a14:7582:d000::/36</code></li><li><code>2a14:7582:e000::/36</code></li><li><code>2a14:7583:8200::/40</code></li></ul></details>
+      </li>
+    </ul>
   </div>
 </section>
 
