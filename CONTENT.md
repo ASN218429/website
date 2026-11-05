@@ -24,24 +24,21 @@ Not claimed anywhere: other addresses, 24/7 support, SLA, uptime, own filtering 
 
 ## Files
 
-- `public/index.html`: the page. It works without JS; the palette switch and copy button only appear when JS runs.
-- `public/assets/site.css`: tokens for both palettes, plus the font faces.
-- `public/assets/palette.js`: loaded synchronously in `<head>`. Galenius is the default; `?palette=autumn` applies for one load; the choice is stored in localStorage `as218429-palette`.
-- `public/assets/site.js`: palette switch, current-section nav marker, copy address.
+- `public/index.html`: the page, fixed to the Autumn palette (`<html data-palette="autumn">`, `theme-color` `#17110e`). It works without JS; the copy button ships `hidden` and appears only when JS runs.
+- `public/assets/site.css`: the Autumn tokens on `:root` (so they apply without JS), plus the font faces. There is no other palette.
+- `public/assets/site.js`: current-section nav marker, copy address, and a one-time removal of the retired `as218429-palette` localStorage key. Nothing reads `?palette=` or storage, so neither can change the colours. The Galenius palette, the palette switch and `palette.js` were removed on 2026-11-05.
 - `public/assets/fonts/`: Schibsted Grotesk variable (latin) and IBM Plex Mono 400 (latin). Only these two files.
-- `public/assets/brand/`: org/favicon mark. **Chosen: `org-icon.svg` / `org-icon.png`** (512×512, the "route" mark: two nodes joined by one bent path, magenta on plum `#1a1226`). Alternatives are `org-icon-route` (identical to the chosen one), `org-icon-peak` (an A-chevron with a node) and `org-icon-stack` (bars; rejected because it reads as a menu icon). The page links the SVG as its favicon and the PNG as the apple-touch and og image.
+- `public/assets/brand/`: org/favicon mark. **Chosen: `org-icon.svg` / `org-icon.png`** (512×512, the "route" mark: two nodes joined by one bent path, in Autumn colours: amber `#eda75b` path, copper `#d87b44` start node, cream `#f4e9dc` end node, on umber `#241a14`). The PNG is exported from the SVG with ImageMagick. Alternatives are `org-icon-route` (identical to the chosen one, recoloured the same way), `org-icon-peak` (an A-chevron with a node) and `org-icon-stack` (bars; rejected because it reads as a menu icon). Peak and stack still use the old Galenius colours because they are not used. The page links the SVG as its favicon and the PNG as the apple-touch and og image.
 - `public/robots.txt` and `public/sitemap.xml` use the canonical `https://as218429.net/`.
 
 External brand and resource links use `target="_blank" rel="noopener noreferrer"`. The two CDN data links open in the same tab.
 
-## Checks run (2026-11-05, Helium/Chromium via CDP, local `python3 -m http.server`)
+## Checks run (2026-11-05, Autumn-only pass, Helium/Chromium via CDP, local `python3 -m http.server`)
 
-- 1440×900 and 390×844 (DPR 2), in both palettes: no horizontal overflow, no console or log entries, fonts loaded, body background correct for each palette, switch `aria-pressed` in sync.
-- Widths 320, 360, 768 and 1024: no overflow. At 320 the palette switch first overflowed by 9px; fixed by hiding the swatch dots below 360px. The header wordmark and switch do not overlap.
-- Interactions: clicking Autumn sets `data-palette` and localStorage, and the choice survives a reload. Every `#anchor` resolves. All `target=_blank` links carry `noopener noreferrer`. Link list checked: CDN geofeed/network.json, RIPE DB aut-num, RIPEstat, PeeringDB net 43956, bgp.he.net, as209874.net, as49581.net, lg.as49581.net, NovaCloud protection page, ruxora.org, galeniusnodes.com, and the three mailto templates.
-- With JS disabled: the page renders on the dark ground with all content and mailto routes; the switch and copy button are hidden.
-- Impeccable detector: two warnings. "Tbps 5.44px" is a false positive (the computed size is 22.8px or more at every width checked). "Palette switch flush padding" is an intentional 2px segmented-control track.
-- Screenshots: `/tmp/asn-production-{desktop,mobile}-{galenius,autumn}.png`, `/tmp/asn-production-mobile-360-header.png`.
+- 1440×900, 390×844 and 320×640 (DPR 2 on mobile), each loaded with a stale localStorage `as218429-palette=galenius` and with `?palette=galenius`: `data-palette` stays `autumn`, `theme-color` is `#17110e`, the body is `rgb(23,17,14)` and the primary button is `rgb(216,123,68)`. There is no picker element and no horizontal overflow. The console and log are empty, both fonts load, and the stale key is cleared.
+- The favicon SVG returns 200 `image/svg+xml` and the header mark renders. Clicking Copy puts `gvol@nexusystems.org` on the clipboard, the button reads "Copied" and the live status is announced.
+- With JS disabled, at all three sizes: Autumn colours, no overflow, and the copy button is hidden. The mailto routes remain.
+- The copy, layout and links are unchanged from the previous pass; only the palette code and the icon colours changed.
 
 ## Limits
 

@@ -1,20 +1,7 @@
 (function () {
   'use strict';
-  var root = document.documentElement, P = window.__palette;
-
-  /* Palette switch */
-  var btns = [].slice.call(document.querySelectorAll('[data-palette-switch] [data-set]'));
-  function sync() { var c = root.getAttribute('data-palette'); btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-set') === c)); }); }
-  function set(v, persist) {
-    if (!P || !P.ok(v)) return;
-    root.setAttribute('data-palette', v);
-    if (persist) try { localStorage.setItem(P.key, v); } catch (e) {}
-    try { var u = new URL(location.href); if (u.searchParams.has('palette')) { u.searchParams.set('palette', v); history.replaceState(history.state, '', u); } } catch (e) {}
-    sync();
-  }
-  btns.forEach(function (b) { b.addEventListener('click', function () { set(b.getAttribute('data-set'), true); }); });
-  addEventListener('storage', function (e) { if (P && e.key === P.key && P.ok(e.newValue)) set(e.newValue, false); });
-  sync();
+  /* Autumn is the only palette. Clear the key left by the retired palette switch. */
+  try { localStorage.removeItem('as218429-palette'); } catch (e) {}
 
   /* Mark the section in view in the header nav */
   var links = [].slice.call(document.querySelectorAll('.bar nav a'));
@@ -27,6 +14,7 @@
 
   /* Copy mailbox */
   document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.hidden = false;
     var label = b.textContent, status = document.querySelector(b.getAttribute('data-status'));
     b.addEventListener('click', function () {
       var text = b.getAttribute('data-copy');
