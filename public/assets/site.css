@@ -25,10 +25,12 @@ code{font-family:var(--mono);font-size:.86em;font-variant-numeric:tabular-nums}
 .skip{position:absolute;left:12px;top:-60px;z-index:20;background:var(--fg);color:var(--on);padding:10px 14px;border-radius:8px;font-weight:600;text-decoration:none}
 .skip:focus{top:12px}
 
-/* External-link mark: drawn, not a glyph */
-.ext::after{content:"";display:inline-block;width:.62em;height:.62em;margin-left:.32em;vertical-align:.02em;background:currentColor;
-  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 2h6v6M10 2 2.5 9.5'/%3E%3C/svg%3E") center/contain no-repeat;
-          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 2h6v6M10 2 2.5 9.5'/%3E%3C/svg%3E") center/contain no-repeat}
+/* External-link mark: pure CSS (no image/mask URL, so CSP img-src 'self' cannot block it).
+   Two short arms make the corner, a rotated bar is the shaft; all in currentColor. */
+.ext::after{content:"";display:inline-block;width:.56em;height:.56em;margin-left:.3em;vertical-align:.06em;
+  background:linear-gradient(currentColor,currentColor) right top/62% .12em no-repeat,
+             linear-gradient(currentColor,currentColor) right top/.12em 62% no-repeat,
+             linear-gradient(to bottom right,transparent calc(50% - .065em),currentColor calc(50% - .065em),currentColor calc(50% + .065em),transparent calc(50% + .065em)) no-repeat}
 
 .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--on);font:600 16px/1 var(--sans);padding:15px 20px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;transition:background .2s,transform .2s var(--ease)}
 .btn:hover{background:var(--accent2)}
@@ -103,10 +105,8 @@ section.s{padding:112px 0 0}
 details{border-top:1px solid var(--line);padding-top:12px}
 summary{display:inline-flex;align-items:center;gap:8px;cursor:pointer;color:var(--accent2);font-weight:600;font-size:15px;list-style:none;border-radius:4px}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"";width:.7em;height:.7em;background:currentColor;transition:transform .2s var(--ease);
-  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5'/%3E%3C/svg%3E") center/contain no-repeat;
-          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5'/%3E%3C/svg%3E") center/contain no-repeat}
-details[open] summary::after{transform:rotate(180deg)}
+summary::after{content:"";flex:none;width:.42em;height:.42em;margin-left:2px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-.12em) rotate(45deg);transition:transform .2s var(--ease)}
+.locs details[open] summary::after{transform:translateY(.1em) rotate(-135deg)}
 summary:hover{color:var(--fg)}
 .pfx{list-style:none;display:grid;gap:6px;margin-top:14px}
 .pfx code{font-size:14px;color:var(--fg);overflow-wrap:anywhere}

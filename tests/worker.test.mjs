@@ -18,3 +18,17 @@ test('CDN discovery, canonical host and conditional requests', async () => {
   assert.equal(await (await request('/', {method: 'HEAD'})).text(), '');
   assert.equal((await request('/', {method: 'POST'})).status, 405);
 });
+test('stylesheet assets load under the production content security policy', async () => {
+  const response = await request('/assets/site.css');
+  assert.match(response.headers.get('Content-Security-Policy'), /img-src 'self';/);
+  const css = await response.text();
+  const references = [...css.matchAll(/url\(\s*(["']?)(.*?)\1\s*\)/g)];
+  assert.ok(references.length > 0, 'the stylesheet includes font or image assets');
+  for (const [, , reference] of references) {
+    const url = new URL(reference, 'https://as218429.net/assets/site.css');
+    assert.equal(url.origin, 'https://as218429.net', `${reference} must satisfy the self-only policy`);
+    const asset = await request(url.pathname + url.search);
+    assert.equal(asset.status, 200, `${reference} must be served by the Worker`);
+    assert.match(asset.headers.get('Content-Type'), /^(image\/|font\/)/, reference);
+  }
+});
